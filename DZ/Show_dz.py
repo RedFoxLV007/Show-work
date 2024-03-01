@@ -1,5 +1,6 @@
 import time
 # https://prosvirov-vladimir.github.io/test-authorization/sign-up.html (таблица ТК)
+from URL import address_url
 import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -8,7 +9,7 @@ from selenium.webdriver.common.by import By
 @pytest.fixture
 def driver():
     driver = webdriver.Chrome()
-    driver.get("https://prosvirov-vladimir.github.io/test-authorization/sign-up.html")
+    driver.get(address_url)
     driver.implicitly_wait(5)
     driver.maximize_window()
     yield driver

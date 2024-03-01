@@ -1,0 +1,1 @@
+address_url = "https://prosvirov-vladimir.github.io/test-authorization/sign-up.html"
