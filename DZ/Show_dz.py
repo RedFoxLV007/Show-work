@@ -6,6 +6,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 
 
+
 @pytest.fixture
 def driver():
     driver = webdriver.Chrome()
@@ -106,3 +107,17 @@ def test_authorization_falled_mail(driver):
     button = driver.find_element(By.XPATH, "/html/body/div/form/button")
     button.click()
     driver.save_screenshot("Screen/test_authorization_falled_mail.png")
+
+#========================== parameterization ================================================
+
+@pytest.mark.parametrize("input_value, expected", [("89297970707", ["89297970707","Нормальный"]), ("sdfghjkrgh", ["89297970707","буквы"]), ("1", ["89297970707","одна цифра!"])])
+def test_parameterization_phone(driver, input_value, expected):
+    input_elem = driver.find_element(By.XPATH, "/html/body/div/form/input[6]")
+    input_elem.send_keys(input_value)
+    driver.save_screenshot("Screen/test_parameterization_phone.png") # как делать все скрины при param?
+    print(expected)
+
+
+
+
+
