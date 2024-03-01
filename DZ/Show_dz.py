@@ -6,7 +6,6 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 
 
-
 @pytest.fixture
 def driver():
     driver = webdriver.Chrome()
@@ -16,8 +15,9 @@ def driver():
     yield driver
     driver.quit()
 
+
 def test_Register1(driver):
-    input_elem = driver.find_element(By.XPATH,"/html/body/div/form/input[1]")
+    input_elem = driver.find_element(By.XPATH, "/html/body/div/form/input[1]")
     input_elem.send_keys("Вячеслав")
     input_elem = driver.find_element(By.XPATH, "/html/body/div/form/input[2]")
     input_elem.send_keys("Лис")
@@ -34,9 +34,9 @@ def test_Register1(driver):
     input_elem.send_keys("89297970707")
     input_elem = driver.find_element(By.XPATH, "/html/body/div/form/label/input")
     input_elem.click()
-    button = driver.find_element(By.XPATH,"/html/body/div/form/button")
+    button = driver.find_element(By.XPATH, "/html/body/div/form/button")
     button.click()
-    p_elem = driver.find_element(By.XPATH,"/html/body/div/p")
+    p_elem = driver.find_element(By.XPATH, "/html/body/div/p")
     p_elem.click()
     driver.save_screenshot("Screen/test_Register1.png")
 
@@ -54,7 +54,7 @@ def test_authorization(driver):
 
 
 def test_Register_emptyNAME(driver):
-    input_elem = driver.find_element(By.XPATH,"/html/body/div/form/input[1]")
+    input_elem = driver.find_element(By.XPATH, "/html/body/div/form/input[1]")
     input_elem.send_keys("")
     input_elem = driver.find_element(By.XPATH, "/html/body/div/form/input[2]")
     input_elem.send_keys("Лис")
@@ -71,12 +71,13 @@ def test_Register_emptyNAME(driver):
     input_elem.send_keys("89297970707")
     input_elem = driver.find_element(By.XPATH, "/html/body/div/form/label/input")
     input_elem.click()
-    button = driver.find_element(By.XPATH,"/html/body/div/form/button")
+    button = driver.find_element(By.XPATH, "/html/body/div/form/button")
     button.click()
     driver.save_screenshot("Screen/Register_emptyNAME.png")
 
+
 def test_Register_noCheckBox(driver):
-    input_elem = driver.find_element(By.XPATH,"/html/body/div/form/input[1]")
+    input_elem = driver.find_element(By.XPATH, "/html/body/div/form/input[1]")
     input_elem.send_keys("Вячеслав")
     input_elem = driver.find_element(By.XPATH, "/html/body/div/form/input[2]")
     input_elem.send_keys("Лис")
@@ -91,10 +92,9 @@ def test_Register_noCheckBox(driver):
     input_elem.send_keys("Россия")
     input_elem = driver.find_element(By.XPATH, "/html/body/div/form/input[6]")
     input_elem.send_keys("89297970707")
-    button = driver.find_element(By.XPATH,"/html/body/div/form/button")
+    button = driver.find_element(By.XPATH, "/html/body/div/form/button")
     button.click()
     driver.save_screenshot("Screen/test_Register_noCheckBox.png")
-
 
 
 def test_authorization_falled_mail(driver):
@@ -108,16 +108,16 @@ def test_authorization_falled_mail(driver):
     button.click()
     driver.save_screenshot("Screen/test_authorization_falled_mail.png")
 
-#========================== parameterization ================================================
 
-@pytest.mark.parametrize("input_value, expected", [("89297970707", ["89297970707","Нормальный"]), ("sdfghjkrgh", ["89297970707","буквы"]), ("1", ["89297970707","одна цифра!"])])
+# ========================== parameterization ================================================
+XPATH_locator = "/html/body/div/form/input[6]"
+
+
+@pytest.mark.parametrize("input_value, expected",
+                         [("89297970707", ["89297970707", "Нормальный"]), ("sdfghjkrgh", ["89297970707", "буквы"]),
+                          ("1", ["89297970707", "одна цифра!"])])
 def test_parameterization_phone(driver, input_value, expected):
-    input_elem = driver.find_element(By.XPATH, "/html/body/div/form/input[6]")
+    input_elem = driver.find_element(By.XPATH, XPATH_locator)
     input_elem.send_keys(input_value)
-    driver.save_screenshot("Screen/test_parameterization_phone.png") # как делать все скрины при param?
+    driver.save_screenshot("Screen/test_parameterization_phone.png")  # как делать все скрины при param?
     print(expected)
-
-
-
-
-
