@@ -1,5 +1,5 @@
 import time
-
+# https://prosvirov-vladimir.github.io/test-authorization/sign-up.html (таблица ТК)
 import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
