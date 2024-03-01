@@ -36,7 +36,7 @@ def test_Register1(driver):
     button.click()
     p_elem = driver.find_element(By.XPATH,"/html/body/div/p")
     p_elem.click()
-    driver.save_screenshot("test_Register1.png")
+    driver.save_screenshot("Screen/test_Register1.png")
 
 
 def test_authorization(driver):
@@ -48,7 +48,7 @@ def test_authorization(driver):
     input_elem.send_keys("qwertyASD123!")
     button = driver.find_element(By.XPATH, "/html/body/div/form/button")
     button.click()
-    driver.save_screenshot("test_authorization.png")
+    driver.save_screenshot("Screen/test_authorization.png")
 
 
 def test_Register_emptyNAME(driver):
@@ -71,7 +71,7 @@ def test_Register_emptyNAME(driver):
     input_elem.click()
     button = driver.find_element(By.XPATH,"/html/body/div/form/button")
     button.click()
-    driver.save_screenshot("Register_emptyNAME.png")
+    driver.save_screenshot("Screen/Register_emptyNAME.png")
 
 def test_Register_noCheckBox(driver):
     input_elem = driver.find_element(By.XPATH,"/html/body/div/form/input[1]")
@@ -91,7 +91,7 @@ def test_Register_noCheckBox(driver):
     input_elem.send_keys("89297970707")
     button = driver.find_element(By.XPATH,"/html/body/div/form/button")
     button.click()
-    driver.save_screenshot("test_Register_noCheckBox.png")
+    driver.save_screenshot("Screen/test_Register_noCheckBox.png")
 
 
 
@@ -104,4 +104,4 @@ def test_authorization_falled_mail(driver):
     input_elem.send_keys("qwertyASD123!")
     button = driver.find_element(By.XPATH, "/html/body/div/form/button")
     button.click()
-    driver.save_screenshot("test_authorization_falled_mail.png")
+    driver.save_screenshot("Screen/test_authorization_falled_mail.png")
